@@ -2,7 +2,7 @@ import os
 from PIL import Image, ImageFilter
 
 where = ".\\Day2Resource\\img\\"
-outfolder = ".\\Day2Resource\\img\\out\\"
+outfolder = ".\\Day2Resource\\imgout\\"
 
 def processAllImages(onlyFirst):
     c = 1

@@ -1,5 +1,5 @@
 import os
-from PIL import Image, ImageFilter
+from PIL import Image, ImageFilter, ImageDraw
 
 where = ".\\Day2Resource\\img\\"
 outfolder = ".\\Day2Resource\\imgout\\"
@@ -36,6 +36,9 @@ def processAllImages(onlyFirst):
                 mark = Image.open(".\\Day2Resource\\watermark.png")
                 mark = mark.resize((100, 100))
                 out = watermark(im, mark, (0, 50))
+
+                d = ImageDraw.Draw(out)
+                d.text((700, 500), "Hello World", fill=(155, 155, 155))
 
                 out.save(outFileName)
                 c += 1
