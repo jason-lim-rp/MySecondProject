@@ -33,6 +33,10 @@ def processAllImages(onlyFirst):
                 if (os.path.exists(outfolder) == False):
                     os.mkdir(outfolder)
 
+                mark = Image.open(".\\Day2Resource\\watermark.png")
+                mark = mark.resize((100, 100))
+                out = watermark(im, mark, (0, 50))
+
                 out.save(outFileName)
                 c += 1
                 if (onlyFirst):
@@ -46,9 +50,14 @@ def cleanOutput():
             fullName = os.path.join(root, file)
             os.remove(fullName)
             print (".")
-
     print ("Done")
 
+
+def watermark(im, mark, position):
+    layer = Image.new('RGBA', im.size, (0,0,0,0))
+    layer.paste(mark, position)
+    return Image.composite(layer, im, layer)
+
 cleanOutput()
-processAllImages(True)
+processAllImages(False)
 
